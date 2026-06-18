@@ -3,8 +3,6 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- YouTube Error 153 fix -->
   <meta name="referrer" content="strict-origin-when-cross-origin" />
 
   <title>कमरको व्यायाम तालिका</title>
@@ -16,12 +14,9 @@
       --text: #172033;
       --muted: #667085;
       --primary: #2563eb;
-      --primary-dark: #1d4ed8;
       --green: #16a34a;
       --orange: #f97316;
-      --red: #dc2626;
       --border: #e5e7eb;
-      --soft: #f8fafc;
       --shadow: 0 18px 45px rgba(15, 23, 42, 0.12);
       --radius: 26px;
     }
@@ -144,7 +139,6 @@
     .badge {
       display: inline-flex;
       align-items: center;
-      gap: 5px;
       font-size: 12px;
       font-weight: 700;
       padding: 6px 10px;
@@ -329,10 +323,6 @@
       background: #0f172a;
     }
 
-    .video-frame.tiktok iframe {
-      overflow: hidden;
-    }
-
     .details {
       padding: 0 16px 16px;
     }
@@ -367,7 +357,8 @@
 
     .instruction h3 {
       margin: 0 0 8px;
-      font-size: 16px;
+      font-size: 17px;
+      color: #172033;
     }
 
     .instruction ul {
@@ -376,8 +367,9 @@
     }
 
     .instruction li {
-      margin-bottom: 5px;
+      margin-bottom: 6px;
       font-size: 14px;
+      line-height: 1.6;
       color: #344054;
     }
 
@@ -603,6 +595,7 @@
     <section class="warning-card">
       <strong>सावधानी:</strong>
       खुट्टातिर दुखाइ, झमझमाहट, numbness, कमजोरी वा चक्कर बढेमा व्यायाम रोक्नुहोस्।
+      व्यायाम गर्दा दुखाइ कम्मरतिर मात्र रहन्छ वा घट्छ भने राम्रो संकेत हुन सक्छ।
     </section>
 
     <section class="exercise-card" id="exerciseCard">
@@ -642,7 +635,7 @@
         <div class="video-frame youtube" id="videoFrameWrap">
           <iframe
             id="videoFrame"
-            src=""
+            src="about:blank"
             title="Exercise Video"
             referrerpolicy="strict-origin-when-cross-origin"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -654,7 +647,7 @@
       <div class="details">
         <div class="rep-box">
           <strong>सेट र रिपिटेसन</strong>
-          <span id="setsRepsText">१० पटक × १० सेकेन्ड होल्ड, दिनमा २ पटक</span>
+          <span id="setsRepsText"></span>
         </div>
 
         <div class="instruction">
@@ -674,71 +667,143 @@
 
   <script>
     const exercises = [
-  {
-    title: "घोप्टो परेर सिधा घुँडासहित खुट्टा उठाउने",
-    subtitle: "Prone Hip Extension with Straight Knee",
-    animation: "anim-prone-hip",
-    videoType: "youtube",
-    videoEmbed: "https://www.youtube.com/embed/O-m_M9-qlIY?si=p5X4cpHapwfr1AL9",
-    watchUrl: "https://www.youtube.com/watch?v=O-m_M9-qlIY"
-  },
-  {
-    title: "घोप्टो परेर कुहिनोको सहारामा बस्ने",
-    subtitle: "Prone on Elbows / Prone Elbow Prop",
-    animation: "anim-elbow",
-    videoType: "youtube",
-    videoEmbed: "https://www.youtube.com/embed/K9_P33gGwdY",
-    watchUrl: "https://youtube.com/shorts/K9_P33gGwdY"
-  },
-  {
-    title: "घोप्टो परेर छाती/माथिल्लो भाग उठाउने",
-    subtitle: "Prone Trunk Lift / Prone Trunk Extension",
-    animation: "anim-trunk",
-    videoType: "tiktok",
-    videoEmbed: "https://www.tiktok.com/embed/v2/7575743992193731871",
-    watchUrl: "https://www.tiktok.com/@drjordanweber/video/7575743992193731871"
-  },
-  {
-    title: "ढाड फर्केर सिधा खुट्टा उठाउने",
-    subtitle: "Active Straight Leg Raise",
-    animation: "anim-slr",
-    videoType: "tiktok",
-    videoEmbed: "https://www.tiktok.com/embed/v2/7615092534531984658",
-    watchUrl: "https://www.tiktok.com/@goodsports.physio/video/7615092534531984658"
-  },
-  {
-    title: "ब्रिज व्यायाम",
-    subtitle: "Bridge / Glute Bridge / Supine Bridge",
-    animation: "anim-bridge",
-    videoType: "youtube",
-    videoEmbed: "https://www.youtube.com/embed/tMeNjTj7AX0?si=g2NYrA_A3tBB6yB7",
-    watchUrl: "https://www.youtube.com/watch?v=tMeNjTj7AX0"
-  },
-  {
-    title: "९०/९० ह्यामस्ट्रिङ स्ट्रेच",
-    subtitle: "90/90 Hamstring Stretch / Assisted Knee Extension",
-    animation: "anim-ham",
-    videoType: "youtube",
-    videoEmbed: "https://www.youtube.com/embed/LCWplhsgtR8",
-    watchUrl: "https://youtube.com/shorts/LCWplhsgtR8"
-  },
-  {
-    title: "ढाड फर्केर पेल्भिक टिल्ट",
-    subtitle: "Supine Pelvic Tilt / Posterior Pelvic Tilt",
-    animation: "anim-tilt",
-    videoType: "youtube",
-    videoEmbed: "https://www.youtube.com/embed/TWuR_U9ddcc?si=FhOZJCAkFn-1zUjN&start=25",
-    watchUrl: "https://www.youtube.com/watch?v=TWuR_U9ddcc&t=25s"
-  },
-  {
-    title: "कुर्सीमा बसेर घुँडा सिधा गर्ने",
-    subtitle: "Seated Knee Extension / Long Arc Quad",
-    animation: "anim-knee",
-    videoType: "youtube",
-    videoEmbed: "https://www.youtube.com/embed/VuJZ6dqMf8M?si=X0ZUZT3Sx7ezVQT_",
-    watchUrl: "https://www.youtube.com/watch?v=VuJZ6dqMf8M"
-  }
-];
+      {
+        title: "घोप्टो परेर सिधा घुँडासहित खुट्टा उठाउने",
+        subtitle: "Prone Hip Extension with Straight Knee",
+        animation: "anim-prone-hip",
+        videoType: "youtube",
+        videoEmbed: "https://www.youtube.com/embed/O-m_M9-qlIY?si=p5X4cpHapwfr1AL9",
+        tip: "कम्मर धेरै नबङ्ग्याई खुट्टा सानो range मा उठाउनुहोस्।",
+        danger: "कम्मरमा चर्को दुखाइ वा खुट्टातिर दुखाइ बढेमा यो व्यायाम रोक्नुहोस्।",
+        sets: "१० पटक × १० सेकेन्ड होल्ड, दिनमा २ पटक",
+        steps: [
+          "पेटको बलले घोप्टो परेर सुत्नुहोस्।",
+          "घुँडा सकेसम्म सिधा राख्नुहोस्।",
+          "एउटा खुट्टा बिस्तारै थोरै माथि उठाउनुहोस्।",
+          "कम्मर धेरै नबङ्ग्याई १० सेकेन्ड होल्ड गर्नुहोस्।",
+          "बिस्तारै तल झार्नुहोस् र अर्को खुट्टामा दोहोर्‍याउनुहोस्।"
+        ]
+      },
+      {
+        title: "घोप्टो परेर कुहिनोको सहारामा बस्ने",
+        subtitle: "Prone on Elbows / Prone Elbow Prop",
+        animation: "anim-elbow",
+        videoType: "youtube",
+        videoEmbed: "https://www.youtube.com/embed/K9_P33gGwdY",
+        tip: "कुहिनो काँधको तल राखेर छाती हल्का माथि राख्नुहोस्।",
+        danger: "यदि यसले खुट्टातिर दुखाइ झन् तल पठाउँछ भने रोक्नुहोस्।",
+        sets: "१० पटक × १० सेकेन्ड होल्ड, दिनमा २ पटक",
+        steps: [
+          "घोप्टो परेर सुत्नुहोस्।",
+          "दुवै कुहिनो काँधको तल राख्नुहोस्।",
+          "छाती र टाउको हल्का माथि उठाएर कुहिनोमा support लिनुहोस्।",
+          "पेट र कम्मरलाई सकेसम्म relax राख्नुहोस्।",
+          "१० सेकेन्ड होल्ड गरेर बिस्तारै तल फर्कनुहोस्।"
+        ]
+      },
+      {
+        title: "घोप्टो परेर छाती/माथिल्लो भाग उठाउने",
+        subtitle: "Prone Trunk Lift / Prone Trunk Extension",
+        animation: "anim-trunk",
+        videoType: "tiktok",
+        videoEmbed: "https://www.tiktok.com/embed/v2/7575743992193731871",
+        tip: "छाती हल्का मात्र उठाउनुहोस्। जबरजस्ती धेरै माथि जानु पर्दैन।",
+        danger: "यो अलि बढी load पर्ने व्यायाम हो। सुरुमा हल्का र कम range मा गर्नुहोस्।",
+        sets: "१० पटक × १० सेकेन्ड होल्ड, सुरुमा दिनमा १ पटक",
+        steps: [
+          "घोप्टो परेर सुत्नुहोस्।",
+          "हात आरामसँग काँध नजिक वा शरीरको छेउमा राख्नुहोस्।",
+          "टाउको, छाती र माथिल्लो ढाड हल्का माथि उठाउनुहोस्।",
+          "कम्मरमा धेरै दबाब नदिई १० सेकेन्ड होल्ड गर्नुहोस्।",
+          "बिस्तारै तल फर्कनुहोस्।"
+        ]
+      },
+      {
+        title: "ढाड फर्केर सिधा खुट्टा उठाउने",
+        subtitle: "Active Straight Leg Raise",
+        animation: "anim-slr",
+        videoType: "tiktok",
+        videoEmbed: "https://www.tiktok.com/embed/v2/7615092534531984658",
+        tip: "खुट्टा बिस्तारै उठाउने, झट्का नदिने।",
+        danger: "करेन्ट जस्तो दुखाइ, झमझमाहट वा numbness बढेमा range घटाउनुहोस् वा रोक्नुहोस्।",
+        sets: "१० पटक × १० सेकेन्ड होल्ड, दिनमा १–२ पटक",
+        steps: [
+          "ढाड फर्केर सुत्नुहोस्।",
+          "एउटा घुँडा मोडेर खुट्टा भुइँ वा बेडमा राख्न सकिन्छ।",
+          "अर्को खुट्टा सिधा राख्नुहोस्।",
+          "सिधा खुट्टा बिस्तारै माथि उठाउनुहोस्।",
+          "१० सेकेन्ड होल्ड गरेर बिस्तारै तल झार्नुहोस्।"
+        ]
+      },
+      {
+        title: "ब्रिज व्यायाम",
+        subtitle: "Bridge / Glute Bridge / Supine Bridge",
+        animation: "anim-bridge",
+        videoType: "youtube",
+        videoEmbed: "https://www.youtube.com/embed/tMeNjTj7AX0?si=g2NYrA_A3tBB6yB7",
+        tip: "पेट हल्का tight गरेर hip माथि उठाउनुहोस्।",
+        danger: "कम्मर च्यापिएजस्तो लागेमा धेरै माथि नउठ्नुहोस्।",
+        sets: "१० पटक × १० सेकेन्ड होल्ड, दिनमा २ पटक",
+        steps: [
+          "ढाड फर्केर सुत्नुहोस्।",
+          "दुवै घुँडा मोडेर खुट्टा भुइँ वा बेडमा राख्नुहोस्।",
+          "पेट र नितम्बको मांसपेशी हल्का tight गर्नुहोस्।",
+          "hip/कम्मर बिस्तारै माथि उठाउनुहोस्।",
+          "१० सेकेन्ड होल्ड गरेर बिस्तारै तल फर्कनुहोस्।"
+        ]
+      },
+      {
+        title: "९०/९० ह्यामस्ट्रिङ स्ट्रेच",
+        subtitle: "90/90 Hamstring Stretch / Assisted Knee Extension",
+        animation: "anim-ham",
+        videoType: "youtube",
+        videoEmbed: "https://www.youtube.com/embed/LCWplhsgtR8",
+        tip: "तिघ्रा ९० डिग्रीमा support गरेर घुँडाबाट तलको भाग सिधा गर्नुहोस्।",
+        danger: "नसा तन्किएजस्तो कडा दुखाइ भएमा जबरजस्ती नगर्नुहोस्।",
+        sets: "१० पटक × १० सेकेन्ड होल्ड, दिनमा २ पटक",
+        steps: [
+          "ढाड फर्केर सुत्नुहोस्।",
+          "दुवै हातले तिघ्राको पछाडिको भाग support गर्नुहोस्।",
+          "तिघ्रा करिब ९० डिग्रीमा राख्नुहोस्।",
+          "घुँडाबाट तलको भाग बिस्तारै सिधा पार्नुहोस्।",
+          "हल्का stretch महसुस भएपछि १० सेकेन्ड होल्ड गर्नुहोस्।"
+        ]
+      },
+      {
+        title: "ढाड फर्केर पेल्भिक टिल्ट",
+        subtitle: "Supine Pelvic Tilt / Posterior Pelvic Tilt",
+        animation: "anim-tilt",
+        videoType: "youtube",
+        videoEmbed: "https://www.youtube.com/embed/TWuR_U9ddcc?si=FhOZJCAkFn-1zUjN&start=25",
+        tip: "पेट tight गर्दै कम्मरको खाली भाग bed/भुइँतिर हल्का थिच्नुहोस्।",
+        danger: "यो gentle व्यायाम हो, तर दुखाइ बढेमा दबाब कम गर्नुहोस्।",
+        sets: "१० पटक × १० सेकेन्ड होल्ड, दिनमा २ पटक",
+        steps: [
+          "ढाड फर्केर सुत्नुहोस्।",
+          "दुवै घुँडा मोडेर खुट्टा भुइँ वा बेडमा राख्नुहोस्।",
+          "पेटको मांसपेशी हल्का tight गर्नुहोस्।",
+          "कम्मरको खाली भाग भुइँ वा बेडतिर हल्का थिच्नुहोस्।",
+          "१० सेकेन्ड होल्ड गरेर बिस्तारै relax गर्नुहोस्।"
+        ]
+      },
+      {
+        title: "कुर्सीमा बसेर घुँडा सिधा गर्ने",
+        subtitle: "Seated Knee Extension / Long Arc Quad",
+        animation: "anim-knee",
+        videoType: "youtube",
+        videoEmbed: "https://www.youtube.com/embed/VuJZ6dqMf8M?si=X0ZUZT3Sx7ezVQT_",
+        tip: "घुँडाबाट तलको भाग मात्र अगाडि सिधा गर्नुहोस्।",
+        danger: "खुट्टातिर झमझमाहट वा नसा तन्किएको दुखाइ बढेमा range घटाउनुहोस्।",
+        sets: "१० पटक × १० सेकेन्ड होल्ड, दिनमा २ पटक",
+        steps: [
+          "कुर्सी वा बेन्चमा सीधा बस्नुहोस्।",
+          "दुवै खुट्टा भुइँमा राख्नुहोस्।",
+          "एउटा घुँडाबाट तलको भाग बिस्तारै अगाडि सिधा गर्नुहोस्।",
+          "घुँडा सिधा भएपछि १० सेकेन्ड होल्ड गर्नुहोस्।",
+          "बिस्तारै तल फर्काएर अर्को खुट्टामा दोहोर्‍याउनुहोस्।"
+        ]
+      }
+    ];
 
     const nepaliNumbers = ["१", "२", "३", "४", "५", "६", "७", "८"];
     let currentIndex = 0;
@@ -761,25 +826,23 @@
     const exerciseCard = document.getElementById("exerciseCard");
 
     function buildEmbedUrl(exercise) {
-      const url = exercise.videoEmbed;
-
       if (exercise.videoType === "youtube") {
-        const separator = url.includes("?") ? "&" : "?";
+        const separator = exercise.videoEmbed.includes("?") ? "&" : "?";
 
         const origin =
           window.location.origin && window.location.origin !== "null"
             ? window.location.origin
-            : "http://localhost";
+            : "http://localhost:5500";
 
-        return `${url}${separator}rel=0&modestbranding=1&playsinline=1&origin=${encodeURIComponent(origin)}`;
+        return `${exercise.videoEmbed}${separator}rel=0&modestbranding=1&playsinline=1&origin=${encodeURIComponent(origin)}`;
       }
 
       if (exercise.videoType === "tiktok") {
-        const separator = url.includes("?") ? "&" : "?";
-        return `${url}${separator}lang=ne-NP`;
+        const separator = exercise.videoEmbed.includes("?") ? "&" : "?";
+        return `${exercise.videoEmbed}${separator}lang=ne-NP`;
       }
 
-      return url;
+      return exercise.videoEmbed;
     }
 
     function renderExercise() {
@@ -805,11 +868,14 @@
 
       videoFrameWrap.className = "video-frame " + exercise.videoType;
 
-      videoFrame.removeAttribute("src");
-      videoFrame.setAttribute("scrolling", exercise.videoType === "tiktok" ? "no" : "auto");
-      videoFrame.src = buildEmbedUrl(exercise);
+      videoFrame.src = "about:blank";
+
+      setTimeout(() => {
+        videoFrame.src = buildEmbedUrl(exercise);
+      }, 80);
 
       stepsList.innerHTML = "";
+
       exercise.steps.forEach(step => {
         const li = document.createElement("li");
         li.textContent = step;
@@ -818,10 +884,14 @@
 
       const progress = ((currentIndex + 1) / exercises.length) * 100;
       progressBar.style.width = progress + "%";
-      progressText.textContent = `व्यायाम ${nepaliNumbers[currentIndex]} / ${nepaliNumbers[exercises.length - 1]}`;
+      progressText.textContent =
+        `व्यायाम ${nepaliNumbers[currentIndex]} / ${nepaliNumbers[exercises.length - 1]}`;
 
       prevBtn.disabled = currentIndex === 0;
-      nextBtn.textContent = currentIndex === exercises.length - 1 ? "सुरुमा फर्कनुहोस् ↺" : "अर्को →";
+      nextBtn.textContent =
+        currentIndex === exercises.length - 1
+          ? "सुरुमा फर्कनुहोस् ↺"
+          : "अर्को →";
 
       window.scrollTo({
         top: 0,
